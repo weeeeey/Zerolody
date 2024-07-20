@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+:root {
+    height: 100%;
+    background-color: #fac670;
+}
+
+/* piano-key.tsx */
+@layer components {
+    .key {
+        @apply w-full h-[18%] bg-white rounded-xl relative  transition-all   duration-500  flex items-center justify-start pl-6;
+    }
+    .key:hover,
+    .key-selected {
+        @apply translate-x-10 brightness-[0.7];
+    }
+
+    .key-black {
+        @apply bg-black absolute top-[calc(20%)] left-[40%]   -translate-y-1/2;
+        span {
+            @apply bg-white/15;
+        }
+    }
+}
