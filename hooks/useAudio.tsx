@@ -1,5 +1,3 @@
-'use client';
-
 import { useCallback, useEffect, useState } from 'react';
 
 interface useAudioProps {
@@ -22,6 +20,7 @@ export const useAudio = ({
             const newAudio = new Audio(`${publicSrc}-${sound}.mp3`);
 
             setAudio(newAudio);
+            setSelectedKey(sound);
         },
         [audio, publicSrc]
     );
@@ -40,12 +39,10 @@ export const useAudio = ({
             const k = e.key;
             if (soundKeys.includes(k)) {
                 changeAudio(k);
-                setSelectedKey(k);
             } else if (korSoundKeys.includes(k)) {
                 const idx = korSoundKeys.indexOf(k);
                 const enKey = soundKeys[idx];
                 changeAudio(enKey);
-                setSelectedKey(enKey);
             }
         };
         window.addEventListener('keydown', handleKeyDown);

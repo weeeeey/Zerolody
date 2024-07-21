@@ -12,7 +12,7 @@ body,
 /* piano-key.tsx */
 @layer components {
     .key {
-        @apply w-full h-[18%] bg-white rounded-xl relative  transition-all   duration-500  flex items-center justify-start pl-6;
+        @apply w-full h-full bg-white rounded-xl  transition-all   duration-500  flex items-center justify-start pl-6;
     }
     .key:hover,
     .key-selected {
@@ -20,9 +20,27 @@ body,
     }
 
     .key-black {
-        @apply bg-black absolute top-[calc(20%)] left-[40%]   -translate-y-1/2;
+        @apply bg-black;
         span {
-            @apply bg-white/15;
+            @apply bg-white/20;
         }
+    }
+}
+
+@layer components {
+    .dashboard {
+        @apply translate-x-[-100vw];
+        animation: come-center 1s linear forwards;
+    }
+    .key-wrapper {
+        @apply h-[20%] w-full translate-x-[100vw];
+        animation: come-center 1s linear forwards;
+        animation-delay: var(--_t, 0.5s);
+    }
+}
+
+@keyframes come-center {
+    to {
+        transform: translateX(0);
     }
 }

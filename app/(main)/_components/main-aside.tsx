@@ -1,7 +1,6 @@
 'use client';
 import PianoKey from '@/components/piano-key';
 import { useAudio } from '@/hooks/useAudio';
-import { MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 
 const SOUND = ['a', 's', 'd', 'f', 'g', 'w', 'r'];
 const KORSOUND = ['ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅈ', 'ㄱ'];
@@ -14,92 +13,58 @@ const MainAside = () => {
         korSoundKeys: KORSOUND,
         publicSrc: MusicURL,
     });
-    // const [audio, setAudio] = useState<HTMLAudioElement>();
-    // const [selectedKey, setSelectedKey] = useState('');
-
-    // const changeAudio = useCallback(
-    //     (sound: string) => {
-    //         audio && audio.pause();
-    //         const newAudio = new Audio(`${MusicURL}-${sound}.mp3`);
-
-    //         setAudio(newAudio);
-    //     },
-    //     [audio]
-    // );
-
-    // useEffect(() => {
-    //     if (audio) {
-    //         audio.play();
-    //     }
-    //     audio?.addEventListener('ended', (e) => {
-    //         setSelectedKey('');
-    //     });
-    // }, [audio]);
-
-    // useEffect(() => {
-    //     const handleKeyDown = (e: KeyboardEvent) => {
-    //         const k = e.key;
-    //         if (SOUND.includes(k)) {
-    //             changeAudio(k);
-    //             setSelectedKey(k);
-    //         } else if (KORSOUND.includes(k)) {
-    //             const idx = KORSOUND.indexOf(k);
-    //             const enKey = SOUND[idx];
-    //             changeAudio(enKey);
-    //             setSelectedKey(enKey);
-    //         }
-    //     };
-    //     window.addEventListener('keydown', handleKeyDown);
-    //     return () => {
-    //         window.removeEventListener('keydown', handleKeyDown);
-    //     };
-    // }, [changeAudio]);
 
     return (
-        <section className=" bg-black flex justify-center items-center text-white h-full py-20  ">
+        <section className=" bg-black flex justify-center items-center text-white h-full py-20  min-h-[60vh]">
             <div className="flex flex-col justify-center pl-20 w-full h-full space-y-2 relative ">
                 <PianoKey
+                    idx={0}
                     selectedKey={selectedKey}
                     changeAudio={changeAudio}
-                    className="bg-[#90C3CD]"
+                    className="bg-[#90C3CD] "
                     sound="a"
                 />
                 <PianoKey
+                    idx={1}
                     selectedKey={selectedKey}
                     changeAudio={changeAudio}
                     className="bg-[#FAC670]"
                     sound="s"
                 />
                 <PianoKey
+                    idx={2}
                     selectedKey={selectedKey}
                     changeAudio={changeAudio}
                     className="bg-[#F5E1BE]"
                     sound="d"
                 />
                 <PianoKey
+                    idx={3}
                     selectedKey={selectedKey}
                     changeAudio={changeAudio}
                     className="bg-[#F27926]"
                     sound="f"
                 />
                 <PianoKey
+                    idx={4}
                     selectedKey={selectedKey}
                     changeAudio={changeAudio}
                     className="bg-[#C0A8E6]"
                     sound="g"
                 />
                 <PianoKey
+                    idx={5}
                     selectedKey={selectedKey}
                     changeAudio={changeAudio}
                     keyType="key-black"
                     sound="w"
                 />
                 <PianoKey
+                    idx={6}
                     selectedKey={selectedKey}
                     changeAudio={changeAudio}
                     keyType="key-black"
                     sound="r"
-                    className="top-[calc(60%-0.5rem)] "
                 />
             </div>
         </section>

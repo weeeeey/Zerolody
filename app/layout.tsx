@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
     title: 'Zerolody',
     description: 'play your sound',
+    icons: {
+        icon: '/logo.svg',
+    },
 };
 
 export default function RootLayout({
