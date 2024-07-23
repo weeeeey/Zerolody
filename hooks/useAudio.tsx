@@ -1,28 +1,31 @@
 import { useCallback, useEffect, useState } from 'react';
 
 interface useAudioProps {
-    soundKeys: string[];
-    korSoundKeys: string[];
+    sound: string[];
+    enCommands: string[];
+    korCommands: string[];
     publicSrc: string;
 }
 
 export const useAudio = ({
-    soundKeys,
-    korSoundKeys,
+    sound,
+    enCommands,
+    korCommands,
     publicSrc,
 }: useAudioProps) => {
     const [audio, setAudio] = useState<HTMLAudioElement>();
     const [selectedKey, setSelectedKey] = useState('');
 
     const changeAudio = useCallback(
-        (sound: string) => {
+        (soundIdx: number) => {
             audio && audio.pause();
-            const newAudio = new Audio(`${publicSrc}-${sound}.mp3`);
+            const s = sound[soundIdx];
+            const newAudio = new Audio(`${publicSrc}-${s}.mp3`);
 
             setAudio(newAudio);
-            setSelectedKey(sound);
+            setSelectedKey(s);
         },
-        [audio, publicSrc]
+        [audio, publicSrc, sound]
     );
 
     useEffect(() => {
@@ -36,20 +39,18 @@ export const useAudio = ({
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            const k = e.key;
-            if (soundKeys.includes(k)) {
-                changeAudio(k);
-            } else if (korSoundKeys.includes(k)) {
-                const idx = korSoundKeys.indexOf(k);
-                const enKey = soundKeys[idx];
-                changeAudio(enKey);
+            const k = e.key.toLowerCase();
+            if (enCommands.includes(k)) {
+                changeAudio(enCommands.indexOf(k));
+            } else if (korCommands.includes(k)) {
+                changeAudio(korCommands.indexOf(k));
             }
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [changeAudio, korSoundKeys, soundKeys]);
+    }, [changeAudio, korCommands, enCommands]);
 
     return {
         selectedKey,

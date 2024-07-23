@@ -1,13 +1,14 @@
 'use client';
 
-import { MouseEvent, useEffect, useRef, useState } from 'react';
+import { Volume2 } from 'lucide-react';
+import { MouseEvent } from 'react';
 import { cn } from 'zero-cnn';
 
 interface PianokeyProps {
     sound: string;
-    keyType?: 'key-black';
+    keyType?: 'main-key-black';
     className?: string;
-    changeAudio: (sound: string) => void;
+    changeAudio: (soundIdx: number) => void;
     selectedKey: string;
     idx: number;
 }
@@ -22,7 +23,8 @@ const PianoKey = ({
 }: PianokeyProps) => {
     const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
-        changeAudio(sound);
+
+        changeAudio(idx);
     };
 
     return (
@@ -33,14 +35,17 @@ const PianoKey = ({
                     '--_t': `${idx * 0.1}s`,
                 } as React.CSSProperties
             }
-            className={cn('key-wrapper', keyType && `absolute left-[50%] `)}
+            className={cn(
+                'main-key-wrapper',
+                keyType && `absolute left-[50%] `
+            )}
         >
             <a
                 href="#"
                 onClick={handleClick}
                 className={cn(
-                    selectedKey === sound ? 'key-selected' : '',
-                    'key',
+                    selectedKey === sound ? 'main-key-selected' : '',
+                    'main-key',
                     keyType,
                     className
                 )}
@@ -48,6 +53,7 @@ const PianoKey = ({
                 <span className="text-white rounded-md px-4 py-2  uppercase bg-black/10 text-xl ">
                     {sound}
                 </span>
+                {selectedKey === sound && <Volume2 className="size-5 ml-4" />}
             </a>
         </div>
     );

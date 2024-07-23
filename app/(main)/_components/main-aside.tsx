@@ -9,8 +9,9 @@ const MusicURL = '/music/main-music';
 
 const MainAside = () => {
     const { changeAudio, selectedKey } = useAudio({
-        soundKeys: SOUND,
-        korSoundKeys: KORSOUND,
+        sound: SOUND,
+        enCommands: SOUND,
+        korCommands: KORSOUND,
         publicSrc: MusicURL,
     });
 
@@ -56,14 +57,14 @@ const MainAside = () => {
                     idx={5}
                     selectedKey={selectedKey}
                     changeAudio={changeAudio}
-                    keyType="key-black"
+                    keyType="main-key-black"
                     sound="w"
                 />
                 <PianoKey
                     idx={6}
                     selectedKey={selectedKey}
                     changeAudio={changeAudio}
-                    keyType="key-black"
+                    keyType="main-key-black"
                     sound="r"
                 />
             </div>
