@@ -8,8 +8,8 @@ import { cn } from 'zero-cnn';
 const Keyboard = () => {
     // const {} = useAudio();
     return (
-        <div className="main">
-            <div className="keyboard">
+        <main className="main ">
+            <div className="keyboard ">
                 <div className="keyboard__front face-keyboard">
                     <div className="keyboard__f-top">
                         <div className="keyboard__speaker"></div>
@@ -78,7 +78,7 @@ const Keyboard = () => {
                 <div className="keyboard__top face-keyboard"></div>
                 <div className="keyboard__bottom face-keyboard"></div>
             </div>
-        </div>
+        </main>
     );
 };
 

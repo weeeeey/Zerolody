@@ -10,6 +10,9 @@ body,
 
 /* piano-key.tsx */
 @layer components {
+    .main-layout::-webkit-scrollbar {
+        display: none;
+    }
     .main-key {
         @apply w-full h-full bg-white rounded-xl  transition-all   duration-500  flex items-center justify-start pl-6;
     }
@@ -95,17 +98,13 @@ body {
 }
 @media (max-width: 700px) {
     .main {
-        transform: scale(0.6);
+        transform: scale(0.5) translateX(-20%);
     }
 }
+
 @media (max-width: 500px) {
     .main {
-        transform: scale(0.5);
-    }
-}
-@media (max-width: 400px) {
-    .main {
-        transform: scale(0.3);
+        transform: scale(0.4) translateX(-50%);
     }
 }
 
@@ -117,11 +116,11 @@ body {
 
 .keyboard {
     position: relative;
-    left: 27%;
-    top: 33%;
+    left: 50%;
+    top: 50%;
     transform-origin: bottom left;
-    transform: perspective(10000px) rotateY(-16deg) rotateX(66deg)
-        rotateZ(37deg);
+    transform: perspective(10000px) rotateY(-16deg) rotateX(66deg) rotateZ(0deg)
+        translate(-50%, -50%);
 }
 
 .keyboard__front {

@@ -50,10 +50,12 @@ const PianoKey = ({
                     className
                 )}
             >
-                <span className="text-white rounded-md px-4 py-2  uppercase bg-black/10 text-xl ">
+                <span className="text-white rounded-md px-4 py-1 sm:py-2   uppercase bg-black/10 text-sm md:text-xl ">
                     {sound}
                 </span>
-                {selectedKey === sound && <Volume2 className="size-5 ml-4" />}
+                {selectedKey === sound && (
+                    <Volume2 className="size-3 sm:size-4     md:size-5 ml-2 " />
+                )}
             </a>
         </div>
     );
